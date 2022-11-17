@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:materi/presentationlayer/componenview/ion/pading.dart';
 
 class StatefulView extends StatefulWidget {
   const StatefulView({super.key});
@@ -28,7 +27,7 @@ class _StatefulViewState extends State<StatefulView> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Statefull"),
+        title: const Text("Statefull"),
       ),
       body: Column(
         children: [
@@ -36,18 +35,18 @@ class _StatefulViewState extends State<StatefulView> {
             "Welcome to Himakom Training Skill",
             style: TextStyle(fontSize: size),
           ),
-          paddingItem(),
+          const Padding(padding: EdgeInsets.only(top: 10)),
           ElevatedButton(
               onPressed: () {
                 small();
               },
-              child: Text("Kecilkan Tulisan")),
-          paddingItem(),
+              child: const Text("Kecilkan Tulisan")),
+          const Padding(padding: EdgeInsets.only(top: 10)),
           ElevatedButton(
               onPressed: () {
                 big();
               },
-              child: Text("Perbesar Tulisan")),
+              child: const Text("Perbesar Tulisan")),
         ],
       ),
     );

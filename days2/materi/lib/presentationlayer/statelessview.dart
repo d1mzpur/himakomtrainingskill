@@ -1,31 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:materi/presentationlayer/componenview/ion/pading.dart';
 
 class StatelessView extends StatelessWidget {
   const StatelessView({super.key});
-
-  
 
   @override
   Widget build(BuildContext context) {
     double size = 50;
 
-  // void small() {
-  //   setState(() {
-  //     size--;
-  //   });
-  // }
+    // void small() {
+    //   setState(() {
+    //     size--;
+    //   });
+    // }
 
-  // void big() {
-  //   setState(() {
-  //     size++;
-  //   });
-  // }
+    // void big() {
+    //   setState(() {
+    //     size++;
+    //   });
+    // }
 
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Statefull"),
+        title: const Text("Statefull"),
       ),
       body: Column(
         children: [
@@ -33,18 +30,18 @@ class StatelessView extends StatelessWidget {
             "Welcome to Himakom Training Skill",
             style: TextStyle(fontSize: size),
           ),
-          paddingItem(),
+          const Padding(padding: EdgeInsets.only(top: 10)),
           ElevatedButton(
               onPressed: () {
                 // small();
               },
-              child: Text("Kecilkan Tulisan")),
-          paddingItem(),
+              child: const Text("Kecilkan Tulisan")),
+          const Padding(padding: EdgeInsets.only(top: 10)),
           ElevatedButton(
               onPressed: () {
                 // big();
               },
-              child: Text("Perbesar Tulisan")),
+              child: const Text("Perbesar Tulisan")),
         ],
       ),
     );

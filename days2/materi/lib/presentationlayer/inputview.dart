@@ -1,29 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:materi/presentationlayer/componenview/ion/pading.dart';
 
-class inputView extends StatefulWidget {
-  const inputView({super.key});
+class InputView extends StatefulWidget {
+  const InputView({super.key});
 
   @override
-  State<inputView> createState() => _inputViewState();
+  State<InputView> createState() => _InputViewState();
 }
 
-class _inputViewState extends State<inputView> {
+class _InputViewState extends State<InputView> {
   String nama = '';
-  TextEditingController _controller = TextEditingController();
+  final TextEditingController _controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("Input View"),
+        title: const Text("Input View"),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
-            padding: EdgeInsets.all(30),
+            padding: const EdgeInsets.all(30),
             child: TextField(
               controller: _controller,
               //onChanged
@@ -34,7 +33,7 @@ class _inputViewState extends State<inputView> {
               },
             ),
           ),
-          paddingItem(),
+          const Padding(padding: EdgeInsets.only(top: 10)),
           Text(nama.toString())
         ],
       ),
