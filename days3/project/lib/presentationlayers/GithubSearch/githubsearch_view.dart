@@ -4,8 +4,10 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
+import 'package:project/datalayes/Entity/GithubDetail/githubdetail_model.dart';
 import 'package:project/datalayes/Entity/GithubSearch/githubsearch_model.dart';
 import 'package:project/datalayes/Service/GithubSearch/githubsearch_service.dart';
+import 'package:project/presentationlayers/GithubDetailAccount/githubdetail_view.dart';
 
 class GithubSearchView extends StatefulWidget {
   const GithubSearchView({super.key});
@@ -62,13 +64,6 @@ class _GithubSearchViewState extends State<GithubSearchView> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Github Search"),
-        actions: [
-          IconButton(
-              onPressed: () {
-                print(githubSearch);
-              },
-              icon: Icon(Icons.abc))
-        ],
       ),
       body: SafeArea(
         child: Container(
@@ -76,6 +71,14 @@ class _GithubSearchViewState extends State<GithubSearchView> {
           child: Column(
             children: [
               TextField(
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(
+                        width: 3,
+                        color: Color.fromARGB(255, 36, 8, 42)), //<-- SEE HERE
+                    borderRadius: BorderRadius.circular(6.0),
+                  ),
+                ),
                 controller: _controller,
                 onSubmitted: (value) {
                   getData(value);
@@ -85,11 +88,27 @@ class _GithubSearchViewState extends State<GithubSearchView> {
                 child: ListView.builder(
                   itemCount: githubSearch == null ? 0 : githubSearch.length,
                   itemBuilder: (context, index) {
-                    return ListTile(
-                      leading: Image.network(githubSearch[index]['avatar_url']),
-                      title: Text("${githubSearch[index]['login']}"),
-                      subtitle: Text("${githubSearch[index]['url']}"),
-                      onTap: () {},
+                    return Column(
+                      children: [
+                        Divider(
+                          thickness: 1,
+                        ),
+                        ListTile(
+                          leading:
+                              Image.network(githubSearch[index]['avatar_url']),
+                          title: Text("${githubSearch[index]['login']}"),
+                          subtitle: Text("${githubSearch[index]['url']}"),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => GithubDetailView(
+                                      login:
+                                          "${githubSearch[index]['login']}")),
+                            );
+                          },
+                        ),
+                      ],
                     );
                   },
                 ),

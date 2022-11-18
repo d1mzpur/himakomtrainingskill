@@ -6,7 +6,7 @@ import 'package:project/datalayes/Entity/GithubSearch/githubsearch_model.dart';
 
 class GithubSearchService {
   getData(login) async {
-    var accessToken = "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";
+    var accessToken = "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";
 
     try {
       var response = await http.get(
@@ -17,6 +17,7 @@ class GithubSearchService {
           });
 
       var data = jsonDecode(response.body);
+      print(response.body);
       if ((response.statusCode) >= 200 && (response.statusCode) < 404) {
         // var list = data.map((e) => GithubSearch.fromJson(e)).toList();
         print("Masuk1");

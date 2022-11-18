@@ -1,10 +1,6 @@
-import 'dart:async';
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'package:project/datalayes/Entity/GithubList/githublist_model.dart';
 import 'package:project/datalayes/Service/GithubList/githublist_service.dart';
+import 'package:project/presentationlayers/GithubDetailAccount/githubdetail_view.dart';
 import 'package:project/presentationlayers/GithubSearch/githubsearch_view.dart';
 
 class GithubListView extends StatefulWidget {
@@ -71,7 +67,6 @@ class _GithubListViewState extends State<GithubListView> {
               icon: Icon(Icons.search)),
         ],
         centerTitle: true,
-        leading: IconButton(onPressed: () {}, icon: Icon(Icons.person)),
         title: Text(
           "Github User",
           style: TextStyle(color: Colors.white),
@@ -81,11 +76,26 @@ class _GithubListViewState extends State<GithubListView> {
         child: ListView.builder(
             itemCount: githubList.length,
             itemBuilder: (context, index) {
-              return ListTile(
-                leading: Image.network(githubList[index].avatarUrl),
-                title: Text("${githubList[index].login}"),
-                subtitle: Text("${githubList[index].url}"),
-                onTap: () {},
+              return Column(
+                children: [
+                  Divider(
+                    thickness: 1,
+                  ),
+                  ListTile(
+                    leading: Image.network(githubList[index].avatarUrl),
+                    title: Text("${githubList[index].login}"),
+                    subtitle: Text("${githubList[index].url}"),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => GithubDetailView(
+                                  login: '${githubList[index].login}',
+                                )),
+                      );
+                    },
+                  ),
+                ],
               );
             }),
       ),
