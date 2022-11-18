@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:project/presentationlayers/GithubList/githublist_view.dart';
-import 'package:project/presentationlayers/Main/myapp.dart';
 
 void main() {
   runApp(const MyApp());
