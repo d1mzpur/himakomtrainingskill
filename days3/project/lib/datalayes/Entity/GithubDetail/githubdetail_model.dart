@@ -21,7 +21,7 @@ class GithubDetail {
   dynamic company;
   String? blog;
   String? location;
-  dynamic email;
+  String? email;
   dynamic hireable;
   dynamic bio;
   dynamic twitterUsername;
@@ -31,6 +31,13 @@ class GithubDetail {
   int? following;
   String? createdAt;
   String? updatedAt;
+  int? privateGists;
+  int? totalPrivateRepos;
+  int? ownedPrivateRepos;
+  int? diskUsage;
+  int? collaborators;
+  bool? twoFactorAuthentication;
+  Plan? plan;
 
   GithubDetail(
       {this.login,
@@ -64,7 +71,14 @@ class GithubDetail {
       this.followers,
       this.following,
       this.createdAt,
-      this.updatedAt});
+      this.updatedAt,
+      this.privateGists,
+      this.totalPrivateRepos,
+      this.ownedPrivateRepos,
+      this.diskUsage,
+      this.collaborators,
+      this.twoFactorAuthentication,
+      this.plan});
 
   GithubDetail.fromJson(Map<String, dynamic> json) {
     login = json["login"];
@@ -99,6 +113,13 @@ class GithubDetail {
     following = json["following"];
     createdAt = json["created_at"];
     updatedAt = json["updated_at"];
+    privateGists = json["private_gists"];
+    totalPrivateRepos = json["total_private_repos"];
+    ownedPrivateRepos = json["owned_private_repos"];
+    diskUsage = json["disk_usage"];
+    collaborators = json["collaborators"];
+    twoFactorAuthentication = json["two_factor_authentication"];
+    plan = json["plan"] == null ? null : Plan.fromJson(json["plan"]);
   }
 
   Map<String, dynamic> toJson() {
@@ -135,6 +156,40 @@ class GithubDetail {
     _data["following"] = following;
     _data["created_at"] = createdAt;
     _data["updated_at"] = updatedAt;
+    _data["private_gists"] = privateGists;
+    _data["total_private_repos"] = totalPrivateRepos;
+    _data["owned_private_repos"] = ownedPrivateRepos;
+    _data["disk_usage"] = diskUsage;
+    _data["collaborators"] = collaborators;
+    _data["two_factor_authentication"] = twoFactorAuthentication;
+    if (plan != null) {
+      _data["plan"] = plan?.toJson();
+    }
+    return _data;
+  }
+}
+
+class Plan {
+  String? name;
+  int? space;
+  int? collaborators;
+  int? privateRepos;
+
+  Plan({this.name, this.space, this.collaborators, this.privateRepos});
+
+  Plan.fromJson(Map<String, dynamic> json) {
+    name = json["name"];
+    space = json["space"];
+    collaborators = json["collaborators"];
+    privateRepos = json["private_repos"];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> _data = <String, dynamic>{};
+    _data["name"] = name;
+    _data["space"] = space;
+    _data["collaborators"] = collaborators;
+    _data["private_repos"] = privateRepos;
     return _data;
   }
 }

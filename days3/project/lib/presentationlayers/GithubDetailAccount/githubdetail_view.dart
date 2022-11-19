@@ -47,7 +47,7 @@ class _GithubDetailViewState extends State<GithubDetailView> {
               child: Row(
                 children: [
                   Image.network(
-                    "${githubDetail['avatar_url']}",
+                    "${githubDetail.avatarUrl}",
                     height: 72,
                     width: 72,
                   ),
@@ -58,26 +58,25 @@ class _GithubDetailViewState extends State<GithubDetailView> {
                         Align(
                           alignment: Alignment.topLeft,
                           child: Text(
-                            githubDetail['login'],
+                            githubDetail.login,
                             textAlign: TextAlign.left,
                           ),
                         ),
                         Padding(padding: EdgeInsets.only(top: 5)),
                         Align(
                             alignment: Alignment.topLeft,
-                            child: Text(githubDetail['name'])),
+                            child: Text(githubDetail.name)),
                         Padding(padding: EdgeInsets.only(top: 5)),
                         Align(
                           alignment: Alignment.bottomLeft,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(
-                                  "${githubDetail['public_repos']} Repository"),
+                              Text("${githubDetail.publicRepos} Repository"),
                               Padding(padding: EdgeInsets.only(left: 2)),
-                              Text("${githubDetail['followers']} Followers"),
+                              Text("${githubDetail.followers} Followers"),
                               Padding(padding: EdgeInsets.only(left: 2)),
-                              Text("${githubDetail['following']} Folowing"),
+                              Text("${githubDetail.following} Folowing"),
                             ],
                           ),
                         )
@@ -93,7 +92,7 @@ class _GithubDetailViewState extends State<GithubDetailView> {
               child: Align(
                 alignment: Alignment.bottomLeft,
                 child: Text(
-                  githubDetail['bio'] == null ? "" : githubDetail['bio'],
+                  githubDetail.bio == null ? "" : githubDetail.bio,
                   textAlign: TextAlign.justify,
                 ),
               ),
@@ -108,31 +107,31 @@ class _GithubDetailViewState extends State<GithubDetailView> {
                 children: [
                   Row(
                     children: [
-                      githubDetail['email'] != null
+                      githubDetail.email != null
                           ? Row(
                               children: [
                                 Icon(Icons.email),
                                 Padding(padding: EdgeInsets.only(left: 10)),
-                                Text(githubDetail['email'] == null
+                                Text(githubDetail.email == null
                                     ? ""
-                                    : githubDetail['email'])
+                                    : githubDetail.email)
                               ],
                             )
                           : Visibility(
                               visible: false,
                               child: Text("Tidak ada"),
                             ),
-                      githubDetail['email'] != null
+                      githubDetail.email != null
                           ? Padding(padding: EdgeInsets.only(left: 10))
                           : Padding(padding: EdgeInsets.only(left: 0)),
-                      githubDetail['company'] != null
+                      githubDetail.company != null
                           ? Row(
                               children: [
                                 Icon(Icons.business),
                                 Padding(padding: EdgeInsets.only(left: 10)),
-                                Text(githubDetail['company'] == null
+                                Text(githubDetail.company == null
                                     ? ""
-                                    : githubDetail['company'])
+                                    : githubDetail.company)
                               ],
                             )
                           : Visibility(
@@ -144,31 +143,31 @@ class _GithubDetailViewState extends State<GithubDetailView> {
                   Padding(padding: EdgeInsets.only(top: 10)),
                   Row(
                     children: [
-                      githubDetail['blog'] != null
+                      githubDetail.blog != null
                           ? Row(
                               children: [
                                 Icon(Icons.rss_feed),
                                 Padding(padding: EdgeInsets.only(left: 10)),
-                                Text(githubDetail['blog'] == null
+                                Text(githubDetail.blog == null
                                     ? ""
-                                    : githubDetail['blog'])
+                                    : githubDetail.blog)
                               ],
                             )
                           : Visibility(
                               visible: false,
                               child: Text("Tidak ada"),
                             ),
-                      githubDetail['blog'] != null
+                      githubDetail.blog != null
                           ? Padding(padding: EdgeInsets.only(left: 10))
                           : Padding(padding: EdgeInsets.only(left: 0)),
-                      githubDetail['twitter_username'] != null
+                      githubDetail.twitterUsername != null
                           ? Row(
                               children: [
                                 Icon(Icons.tag),
                                 Padding(padding: EdgeInsets.only(left: 10)),
-                                Text(githubDetail['twitter_username'] == null
+                                Text(githubDetail.twitterUsername == null
                                     ? ""
-                                    : githubDetail['twitter_username'])
+                                    : githubDetail.twitterUsername)
                               ],
                             )
                           : Visibility(

@@ -6,7 +6,7 @@ import 'package:project/datalayes/Entity/GithubSearch/githubsearch_model.dart';
 
 class GithubSearchService {
   getData(login) async {
-    var accessToken = "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";
+    var accessToken = "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";
 
     try {
       var response = await http.get(

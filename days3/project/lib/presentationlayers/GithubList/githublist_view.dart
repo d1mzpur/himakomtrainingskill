@@ -16,6 +16,7 @@ class _GithubListViewState extends State<GithubListView> {
 
   getData() async {
     githubList = await network.getData();
+    print(githubList);
     setState(() {});
   }
 
@@ -58,7 +59,7 @@ class _GithubListViewState extends State<GithubListView> {
       appBar: AppBar(
         actions: [
           IconButton(
-              onPressed: () {
+              onPressed: () async {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => GithubSearchView()),

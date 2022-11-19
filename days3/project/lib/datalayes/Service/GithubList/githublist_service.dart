@@ -6,7 +6,7 @@ import 'package:project/datalayes/Entity/GithubList/githublist_model.dart';
 
 class GithubListService {
   getData() async {
-    var accessToken = "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";
+    var accessToken = "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";
 
     try {
       var response =
@@ -16,7 +16,6 @@ class GithubListService {
       });
 
       var data = json.decode(response.body);
-
       if ((response.statusCode) >= 200 && (response.statusCode) < 404) {
         var list = data.map((e) => GithubList.fromJson(e)).toList();
         return list;
